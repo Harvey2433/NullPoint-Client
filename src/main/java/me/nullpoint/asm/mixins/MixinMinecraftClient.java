@@ -124,7 +124,7 @@ public abstract class MixinMinecraftClient extends ReentrantThreadExecutor<Runna
 			return;
 		}
 		//setIcon();
-		setWindowIcon(nullpoint.class.getResourceAsStream("/icon.png"), Rebirth.class.getResourceAsStream("/icon.png"));
+		setWindowIcon(nullpoint.class.getResourceAsStream("/icon.png.bak"), Rebirth.class.getResourceAsStream("/icon.png.bak"));
 	}
 
 	@Unique

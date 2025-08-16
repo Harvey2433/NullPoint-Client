@@ -18,8 +18,9 @@ public final class Nullpoint implements ModInitializer {
 		load();
 	}
 
+	public static final String PREFIX_LOG = "[Maple Client]";
 	public static final String LOG_NAME = "NullPoint";
-	public static final String VERSION = "v2.1.4";
+	public static final String VERSION = "v3.0.0";
 	public static String PREFIX = ";";
 	public static final EventBus EVENT_BUS = new EventBus();
 	// Systems
@@ -50,48 +51,49 @@ public final class Nullpoint implements ModInitializer {
 	}
 
 	public static void load() {
-		System.out.println("[" + LOG_NAME + "] Starting Client");
-		System.out.println("[" + LOG_NAME + "] Register eventbus");
+		System.out.println(PREFIX_LOG + "Starting " + "Maple Client");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Starting Nullpoint");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Register eventbus");
 		EVENT_BUS.registerLambdaFactory("me.nullpoint", (lookupInMethod, klass) -> (MethodHandles.Lookup) lookupInMethod.invoke(null, klass, MethodHandles.lookup()));
-		System.out.println("[" + LOG_NAME + "] Reading Settings");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Reading Settings");
 		CONFIG = new ConfigManager();
 		//Set prefix
 		PREFIX = Nullpoint.CONFIG.getString("prefix", ";");
-		System.out.println("[" + LOG_NAME + "] Initializing Modules");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Initializing Modules");
 		MODULE = new ModuleManager();
-		System.out.println("[" + LOG_NAME + "] Initializing Commands");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Initializing Commands");
 		COMMAND = new CommandManager();
-		System.out.println("[" + LOG_NAME + "] Initializing GUI");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Initializing GUI");
 		GUI = new GuiManager();
-		System.out.println("[" + LOG_NAME + "] Loading Alts");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading Alts");
 		ALT = new AltManager();
-		System.out.println("[" + LOG_NAME + "] Loading Friends");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading Friends");
 		FRIEND = new FriendManager();
-		System.out.println("[" + LOG_NAME + "] Loading RunManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading RunManager");
 		ROTATE = new RotateManager();
-		System.out.println("[" + LOG_NAME + "] Loading BreakManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading BreakManager");
 		BREAK = new MineManager();
-		System.out.println("[" + LOG_NAME + "] Loading PopManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading PopManager");
 		POP = new PopManager();
-		System.out.println("[" + LOG_NAME + "] Loading TimerManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading TimerManager");
 		TIMER = new TimerManager();
-		System.out.println("[" + LOG_NAME + "] Loading ShaderManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading ShaderManager");
 		SHADER = new ShaderManager();
-		System.out.println("[" + LOG_NAME + "] Loading FPSManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading FPSManager");
 		FPS = new FPSManager();
-		System.out.println("[" + LOG_NAME + "] Loading ServerManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading ServerManager");
 		SERVER = new ServerManager();
-		System.out.println("[" + LOG_NAME + "] Loading SpeedManager");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading SpeedManager");
 		SPEED = new SpeedManager();
-		System.out.println("[" + LOG_NAME + "] Loading IRC");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading IRC");
 		IRC = new SocketManager();
 		if (isdev) {
-			System.out.println("[" + LOG_NAME + "] Loading NPIRC");
+			System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading NPIRC");
 			NPIRC = new NpSocketManager();
 		}
-		System.out.println("[" + LOG_NAME + "] Loading Settings");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading Settings");
 		CONFIG.loadSettings();
-		System.out.println("[" + LOG_NAME + "] Initialized and ready to play!");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loaded!");
 
 		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 			if (loaded) {
@@ -104,7 +106,7 @@ public final class Nullpoint implements ModInitializer {
 	public static void unload() {
 		loaded = false;
 		if (AutoCrystal.thread != null && AutoCrystal.thread.isAlive()) AutoCrystal.thread.stop();
-		System.out.println("[" + LOG_NAME + "] Unloading..");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Unloading..");
 		EVENT_BUS.listenerMap.clear();
 		ConfigManager.resetModule();
 		CONFIG = null;
@@ -116,14 +118,14 @@ public final class Nullpoint implements ModInitializer {
 		ROTATE = null;
 		POP = null;
 		TIMER = null;
-		System.out.println("[" + LOG_NAME + "] Unloading success!");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Unloading success!");
 	}
 	public static void save() {
-		System.out.println("[" + LOG_NAME + "] Saving...");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Saving...");
 		CONFIG.saveSettings();
 		FRIEND.saveFriends();
 		ALT.saveAlts();
-		System.out.println("[" + LOG_NAME + "] Saving success!");
+		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Saving success!");
 	}
 	public enum clientType {
 		Dev,

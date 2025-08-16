@@ -3,7 +3,7 @@
   "id": "nullpoint",
   "version": "v2.1.4",
   "name": "nullpoint",
-  "icon": "assets/minecraft/icon.png",
+  "icon": "icon.png.bak",
   "description": "2b2t client for 1.20.4",
   "authors": [
     "asorry",
