@@ -184,7 +184,6 @@ public class ModuleManager implements Wrapper {
 		addModule(new HitboxDesync());
 		addModule(new Replenish());
 		addModule(new Notify());
-		addModule(new MainMenu());
 		if (Nullpoint.isdev){
 			addModule(new OnlyNPIRC());
 		}
