@@ -41,7 +41,6 @@ public class TwoDESP extends Module {
 
     private final BooleanSetting drawItem = add(new BooleanSetting("draw Item Name", true, v -> page.getValue() == Page.Setting));
     private final BooleanSetting drawItemC = add(new BooleanSetting("draw Item Count", true, v -> page.getValue() == Page.Setting && drawItem.getValue()));
-    private final BooleanSetting font = add(new BooleanSetting("CustomFont", true, v -> page.getValue() == Page.Setting));
 
 
     private final BooleanSetting players = add(new BooleanSetting("Players", true, v -> page.getValue() == Page.Target));

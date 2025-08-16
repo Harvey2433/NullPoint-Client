@@ -34,7 +34,6 @@ public class UIModule extends Module {
 	public final SliderSetting animationSpeed = add(new SliderSetting("AnimationSpeed", 0.2, 0.01, 1, 0.01, v -> page.getValue() == Pages.General));
 	public final SliderSetting sliderSpeed = add(new SliderSetting("SliderSpeed", 0.2, 0.01, 1, 0.01, v -> page.getValue() == Pages.General));
 	public final SliderSetting booleanSpeed = add(new SliderSetting("BooleanSpeed", 0.2, 0.01, 1, 0.01, v -> page.getValue() == Pages.General));
-	public final BooleanSetting customFont = add(new BooleanSetting("CustomFont", false, v -> page.getValue() == Pages.General));
 	public final ColorSetting color = add(new ColorSetting("Main", new Color(140, 146, 255), v -> page.getValue() == Pages.Color));
 	public final ColorSetting mainHover = add(new ColorSetting("MainHover", new Color(186, 188, 252), v -> page.getValue() == Pages.Color));
 	public final ColorSetting categoryEnd = add(new ColorSetting("CategoryEnd", -2113929216, v -> page.getValue() == Pages.Color).injectBoolean(true));

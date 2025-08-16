@@ -84,7 +84,7 @@ public class TextUtil implements Wrapper {
 		}
 	}
 	public static boolean isCustomFont() {
-		return UIModule.INSTANCE.customFont.getValue() && FontRenderers.Arial != null;
+		return FontRenderers.Arial == null;
 	}
 	public static float getWidth(String s) {
 		return isCustomFont() ? FontRenderers.Arial.getWidth(s) : mc.textRenderer.getWidth(s);
