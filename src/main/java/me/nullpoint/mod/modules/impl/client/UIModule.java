@@ -25,7 +25,6 @@ public class UIModule extends Module {
 	public static UIModule INSTANCE;
 	private final EnumSetting<Pages> page = add(new EnumSetting<>("Page", Pages.General));
 	public final EnumSetting<AnimateUtil.AnimMode> animMode = add(new EnumSetting<>("AnimMode", AnimateUtil.AnimMode.Mio, v -> page.getValue() == Pages.General));
-	public final EnumSetting<Menu> mainMenu = add(new EnumSetting<>("MainMenu", Menu.Isolation, v -> page.getValue() == Pages.General));
 	public final SliderSetting height = add(new SliderSetting("Height", 16, 10, 20, 1, v -> page.getValue() == Pages.General));
 	public final ColorSetting bindC = add(new ColorSetting("BindText", new Color(255, 255, 255), v -> page.getValue() == Pages.General).injectBoolean(true));
 	public final ColorSetting gearColor = add(new ColorSetting("Gear", new Color(150, 150, 150), v -> page.getValue() == Pages.General).injectBoolean(true));
