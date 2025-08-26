@@ -1,4 +1,5 @@
 package me.nullpoint.asm.mixins;
+
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -11,8 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(TitleScreen.class)
 public abstract class MixinTitleScreen extends Screen {
 
-    // 假设你的屏幕宽度和高度字段也是 protected
-    // private static final Text MAPLE_CLIENT_TEXT = Text.literal("Maple Client Loaded!");
+    private static final String MAPLE_CLIENT_TEXT = "Maple Client Loaded!";
 
     protected MixinTitleScreen() {
         super(Text.literal("dummy"));
@@ -20,15 +20,26 @@ public abstract class MixinTitleScreen extends Screen {
 
     @Inject(method = "render", at = @At("RETURN"))
     private void renderMapleClientInfo(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        // 由于 Mixin 是一个抽象类并继承了 Screen，
-        // 我们现在可以像在 TitleScreen 类中一样直接访问 protected 字段。
-        int textWidth = this.textRenderer.getWidth(Text.literal("Maple Client Loaded!"));
-
         // 计算文本绘制位置
-        int x = 2;
-        int y = this.height - this.textRenderer.fontHeight - 2;
+        int textWidth = this.textRenderer.getWidth(MAPLE_CLIENT_TEXT);
+        int x = this.width - textWidth - 2;
+        int y = 2;
 
-        // 绘制带阴影的文本
-        context.drawTextWithShadow(this.textRenderer, Text.literal("Maple Client Loaded!"), x, y, 0xFFFFFFFF);
+        int currentX = x;
+
+        // 遍历字符串的每一个字符，并用不同的颜色绘制
+        for (int i = 0; i < MAPLE_CLIENT_TEXT.length(); i++) {
+            char character = MAPLE_CLIENT_TEXT.charAt(i);
+
+            // 基于字符位置和时间，计算出平滑的RGB渐变色
+            float hue = (System.currentTimeMillis() % 3000) / 3000.0f + i * 0.02f;
+            int color = java.awt.Color.HSBtoRGB(hue, 0.8f, 1.0f);
+
+            // 绘制单个字符
+            context.drawTextWithShadow(this.textRenderer, String.valueOf(character), currentX, y, color);
+
+            // 更新下一个字符的X坐标
+            currentX += this.textRenderer.getWidth(String.valueOf(character));
+        }
     }
 }
