@@ -49,7 +49,7 @@ public class CommandManager implements Wrapper {
 			}
 		}catch(Exception e)
 		{
-			System.out.println("Error initializing " + Nullpoint.LOG_NAME + " commands.");
+			System.out.println("Error initializing " + Nullpoint.PREFIX_LOG + Nullpoint.LOG_NAME + " commands.");
 			System.out.println(e.getStackTrace().toString());
 		}
 	}

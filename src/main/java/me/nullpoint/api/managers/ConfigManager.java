@@ -77,7 +77,7 @@ public class ConfigManager implements Wrapper {
 				printwriter.println(module.getName() + "_state:" + module.isOn());
 			}
 		} catch (Exception exception) {
-			System.out.println("[" + Nullpoint.LOG_NAME + "] Failed to save settings");
+			System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "] Failed to save settings");
 		} finally {
 			IOUtils.closeQuietly(printwriter);
 		}
@@ -100,7 +100,7 @@ public class ConfigManager implements Wrapper {
 			}
 			//KeyBinding.updateKeysByCode();
 		} catch (Exception exception) {
-			System.out.println("[" + Nullpoint.LOG_NAME + "] Failed to load settings");
+			System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "] Failed to load settings");
 		}
 	}
 

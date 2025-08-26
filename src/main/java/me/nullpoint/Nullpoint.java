@@ -17,8 +17,8 @@ public final class Nullpoint implements ModInitializer {
 	{
 		load();
 	}
-
-	public static final String PREFIX_LOG = "[Maple Client]";
+	public static final String CLIENT_NAME = "Maple Client";
+	public static final String PREFIX_LOG = "[" + Nullpoint.CLIENT_NAME + "]";
 	public static final String LOG_NAME = "NullPoint";
 	public static final String VERSION = "v3.0.0";
 	public static String PREFIX = ";";
@@ -42,7 +42,7 @@ public final class Nullpoint implements ModInitializer {
 	public static ServerManager SERVER;
 	public static boolean loaded = false;
 //推送的时候记得改成false，这个是决定是否启用私有irc频道的
-	public static boolean isdev = true;
+	public static boolean isdev = false;
 
 	public static void update() {
 		MODULE.onUpdate();

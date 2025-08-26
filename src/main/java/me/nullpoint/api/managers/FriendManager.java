@@ -75,13 +75,13 @@ public class FriendManager implements Wrapper {
         PrintWriter printwriter = null;
         try {
             File friendFile = new File(mc.runDirectory, "nullpoint_friends.txt");
-            System.out.println("[" + Nullpoint.LOG_NAME + "] Saving Friends");
+            System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "] Saving Friends");
             printwriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(friendFile), StandardCharsets.UTF_8));
             for (String str : friendList) {
                 printwriter.println(str);
             }
         } catch (Exception exception) {
-            System.out.println("[nullpoint] Failed to save friends");
+            System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "]" + " Failed to save friends");
         }
         printwriter.close();
     }

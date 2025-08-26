@@ -40,7 +40,7 @@ public class AltManager implements Wrapper {
 		PrintWriter printwriter = null;
 		try {
 			File altFile = new File(mc.runDirectory, "nullpoint_alts.txt");
-			System.out.println("[" + Nullpoint.LOG_NAME + "] Saving Alts");
+			System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "] Saving Alts");
 			printwriter = new PrintWriter(
 					new OutputStreamWriter(new FileOutputStream(altFile), StandardCharsets.UTF_8));
 
@@ -48,7 +48,7 @@ public class AltManager implements Wrapper {
 				printwriter.println(alt.getEmail());
 			}
 		} catch (Exception exception) {
-			System.out.println("[" + Nullpoint.LOG_NAME + "] Failed to save alts");
+			System.out.println(Nullpoint.PREFIX_LOG + "[" + Nullpoint.LOG_NAME + "] Failed to save alts");
 		}
 		printwriter.close();
 	}

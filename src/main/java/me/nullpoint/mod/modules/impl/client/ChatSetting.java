@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class ChatSetting extends Module {
     public static ChatSetting INSTANCE;
-    public final StringSetting hackName = add(new StringSetting("Name", Nullpoint.LOG_NAME));
+    public final StringSetting hackName = add(new StringSetting("Name", Nullpoint.CLIENT_NAME));
     public final ColorSetting color = add(new ColorSetting("Color", new Color(140, 146, 255)));
     public final ColorSetting pulse = add(new ColorSetting("Pulse", new Color(0, 0, 0)).injectBoolean(true));
     public final SliderSetting pulseSpeed = add(new SliderSetting("Speed", 1, 0, 5, 0.1, v -> pulse.booleanValue));
