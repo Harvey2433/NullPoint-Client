@@ -1,6 +1,7 @@
 package me.nullpoint.mod.modules.impl.combat;
 
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.*;
@@ -41,8 +42,7 @@ public class Killaura extends Module {
         if (nullCheck()) {
             return;
         }
-
-        if (attackTimer.passed(780)) {
+        if (attackTimer.passed(750)) {
             targets = getTargets();
             for (LivingEntity target : targets) {
                 if (target == null) continue;
@@ -58,10 +58,12 @@ public class Killaura extends Module {
         for (Entity entity : mc.world.getEntities()) {
             if (entity.squaredDistanceTo(mc.player) > FIXED_RANGE_SQ) continue;
             if (entity.getUuid().equals(mc.player.getUuid())) continue;
-
             if (isEnemy(entity)) {
                 newTargets.add((LivingEntity) entity);
             }
+
+
+
         }
         return newTargets;
     }
@@ -78,6 +80,7 @@ public class Killaura extends Module {
             }
         }
         if (entity instanceof HostileEntity && Hostiles.getValue()) {
+//            HostileEntity small = (HostileEntity) entity;
             if (!(entity instanceof EndermanEntity) && !(entity instanceof ZombifiedPiglinEntity) && !(entity instanceof IronGolemEntity ironGolem) && ! (entity instanceof PolarBearEntity polarBear)){
                 return true;
             }
