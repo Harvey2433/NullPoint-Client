@@ -20,9 +20,9 @@ public abstract class MixinTitleScreen extends Screen {
 
     @Inject(method = "render", at = @At("RETURN"))
     private void renderMapleClientInfo(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
-        // 计算文本绘制位置
+        // 计算文本绘制位置，现在增加了右侧边距（从2改为10）
         int textWidth = this.textRenderer.getWidth(MAPLE_CLIENT_TEXT);
-        int x = this.width - textWidth - 2;
+        int x = this.width - textWidth - 10;
         int y = 2;
 
         int currentX = x;
