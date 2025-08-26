@@ -68,6 +68,7 @@ public class HUD extends Module {
     private final BooleanSetting speed = add(new BooleanSetting("Speed", false, v -> page.getValue() == Page.ELEMENTS));
     private final BooleanSetting tps = add(new BooleanSetting("TPS", false, v -> page.getValue() == Page.ELEMENTS));
     private final BooleanSetting fps = add(new BooleanSetting("FPS", false, v -> page.getValue() == Page.ELEMENTS));
+    private final BooleanSetting Date = add(new BooleanSetting("Date", false, v -> page.getValue() == Page.ELEMENTS));
     private final BooleanSetting time = add(new BooleanSetting("Time", false, v -> page.getValue() == Page.ELEMENTS));
 
     private final EnumSetting colorMode = add(new EnumSetting("ColorMode", ColorMode.Pulse, v -> page.getValue() == Page.Color));
@@ -150,15 +151,22 @@ public class HUD extends Module {
                 drawContext.drawTextWithShadow(mc.textRenderer, lowerCase.getValue() ? str.toLowerCase() : str, (width - (lowerCase.getValue() ? mc.textRenderer.getWidth(str.toLowerCase()) : mc.textRenderer.getWidth(str)) - 2), (height - 2 - i), getColor(counter));
                 counter = counter + 1;
             }
+            if (Date.getValue()) {
+                String str = grayString + "Date " + "\u00a7f" + (new SimpleDateFormat("yyyy-MM-dd")).format(new Date());
+                i += 10;
+
+                drawContext.drawTextWithShadow(mc.textRenderer, lowerCase.getValue() ? str.toLowerCase() : str, (width - (lowerCase.getValue() ? mc.textRenderer.getWidth(str.toLowerCase()) : mc.textRenderer.getWidth(str)) - 2), (height - 2 - i), getColor(counter));
+                counter = counter + 1;
+            }
             if (time.getValue()) {
-                String str = grayString + "Time " + "\u00a7f" + (new SimpleDateFormat("h:mm a")).format(new Date());
+                String str = grayString + "Time " + "\u00a7f" + (new SimpleDateFormat("a HH:ss")).format(new Date());
                 i += 10;
 
                 drawContext.drawTextWithShadow(mc.textRenderer, lowerCase.getValue() ? str.toLowerCase() : str, (width - (lowerCase.getValue() ? mc.textRenderer.getWidth(str.toLowerCase()) : mc.textRenderer.getWidth(str)) - 2), (height - 2 - i), getColor(counter));
                 counter = counter + 1;
             }
             if (tps.getValue()) {
-                String str = grayString + "TPS " + "\u00a7f" + Nullpoint.SERVER.getTPS();
+                String str = grayString + "Server TPS " + "\u00a7f" + Nullpoint.SERVER.getTPS();
                 i += 10;
 
                 drawContext.drawTextWithShadow(mc.textRenderer, lowerCase.getValue() ? str.toLowerCase() : str, (width - (lowerCase.getValue() ? mc.textRenderer.getWidth(str.toLowerCase()) : mc.textRenderer.getWidth(str)) - 2), (height - 2 - i), getColor(counter));

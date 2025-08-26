@@ -5,7 +5,6 @@ import me.nullpoint.socket.network.packet.impl.info.OnlineUsersPacket;
 import me.nullpoint.socket.network.packet.impl.info.TokenPacket;
 import me.nullpoint.socket.network.packet.impl.info.UserInfoPacket;
 import me.nullpoint.socket.network.packet.impl.message.ChatMessagePacket;
-import me.nullpoint.socket.network.packet.impl.message.MessagePacket;
 import me.nullpoint.socket.network.packet.impl.operation.OperationPacket;
 import org.apache.logging.log4j.LogManager;
 
@@ -25,7 +24,6 @@ public class PacketFactory {
         packetMap.put(1, UserInfoPacket.class);
         packetMap.put(2, GameInfoPacket.class);
         packetMap.put(3, OnlineUsersPacket.class);
-        packetMap.put(4, MessagePacket.class);
         packetMap.put(5, ChatMessagePacket.class);
         packetMap.put(6, OperationPacket.class);
     }

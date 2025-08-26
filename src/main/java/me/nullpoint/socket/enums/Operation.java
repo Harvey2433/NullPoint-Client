@@ -37,9 +37,6 @@ public enum Operation {
             case CHAT:
                 sendChatMessage(message);
                 break;
-            case IRC_CHAT:
-                Nullpoint.IRC.chat(message);
-                break;
             case TITLE:
                 sendChatMessage(message);
                 break;

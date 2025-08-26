@@ -1,9 +1,6 @@
 package me.nullpoint.socket.network.client;
 
-import me.nullpoint.mod.modules.impl.client.IRC;
 import me.nullpoint.mod.modules.impl.client.Notify;
-import me.nullpoint.mod.modules.impl.client.OnlyNPIRC;
-import me.nullpoint.socket.network.packet.Packet;
 import me.nullpoint.socket.enums.ConnectionState;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -87,22 +84,6 @@ public class SocketClient {
                 group.shutdownGracefully();
             }
         });
-    }
-
-    public void send(Packet packet) {
-        if (channel != null && channel.isActive()) {
-            channel.writeAndFlush(packet).addListener(future -> {
-                if (!future.isSuccess()) {
-                    LogManager.getLogger().error("Failed to send packet: " + future.cause().getMessage());
-                }
-            });
-        } else {
-            if (IRC.INSTANCE.isOn()) {
-                sendNotify("Channel is not active. Cannot send packet.");
-            }else {
-                sendNotify("Please open IRC module and try again.");
-            }
-        }
     }
 
     public void disconnect() {

@@ -104,7 +104,6 @@ public class ModuleManager implements Wrapper {
 		addModule(new BlockerESP());
 		addModule(new Blocker());
 		addModule(new HUD());
-		addModule(new IRC());
 		addModule(new PopChams());
 		addModule(new Burrow());
 		addModule(new AutoCrystal());

@@ -34,7 +34,6 @@ public class CommandManager implements Wrapper {
 	public final Toggle2Command t = new Toggle2Command();
 	public final ToggleCommand toggle = new ToggleCommand();
 	public final WatermarkCommand watermark = new WatermarkCommand();
-	public final IRCCommand irc = new IRCCommand();
 	public final NPIRCCommand np = new NPIRCCommand();
 
 	public CommandManager() {

@@ -4,7 +4,6 @@ import me.nullpoint.api.events.eventbus.EventBus;
 import me.nullpoint.api.managers.*;
 import me.nullpoint.mod.modules.impl.combat.AutoCrystal;
 import me.nullpoint.socket.network.NpSocketManager;
-import me.nullpoint.socket.network.SocketManager;
 import net.fabricmc.api.ModInitializer;
 
 import java.lang.invoke.MethodHandles;
@@ -37,7 +36,6 @@ public final class Nullpoint implements ModInitializer {
 	public static TimerManager TIMER;
 	public static ShaderManager SHADER;
 	public static FPSManager FPS;
-	public static SocketManager IRC;
 	public static NpSocketManager NPIRC;
 	public static ServerManager SERVER;
 	public static boolean loaded = false;
@@ -86,7 +84,6 @@ public final class Nullpoint implements ModInitializer {
 		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading SpeedManager");
 		SPEED = new SpeedManager();
 		System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading IRC");
-		IRC = new SocketManager();
 		if (isdev) {
 			System.out.println(PREFIX_LOG + "[" + LOG_NAME + "] Loading NPIRC");
 			NPIRC = new NpSocketManager();
