@@ -148,6 +148,7 @@ public class ModuleManager implements Wrapper {
 		addModule(new AntiCheat());
 		addModule(new FeetTrap());
 		addModule(new Aura());
+		addModule(new Killaura());
 		addModule(new TPAura());
 		addModule(new ESP());
 		addModule(new Criticals());

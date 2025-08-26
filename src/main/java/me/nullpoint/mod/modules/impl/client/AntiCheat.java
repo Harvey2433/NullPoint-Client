@@ -10,9 +10,6 @@ public class AntiCheat extends Module {
     public AntiCheat(){
         super("AntiCheat", Category.Client);
     }
-
-
-
     private boolean needUpdate = true;
 
     @Override

@@ -238,7 +238,7 @@ public class Burrow extends Module {
                 }
             }
             case Invalid -> {
-                //for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 20; i++)
                     mc.player.networkHandler.sendPacket(new PlayerMoveC2SPacket.PositionAndOnGround(mc.player.getX(), mc.player.getY() + 1337, mc.player.getZ(), false));
             }
             case Fly -> {

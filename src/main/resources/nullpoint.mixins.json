@@ -53,6 +53,7 @@
     "mixins.MixinMouse",
     "mixins.MixinMultiplayerScreen",
     "mixins.MixinParticle",
+    "mixins.MixinTitleScreen",
     "mixins.MixinParticleManager",
     "mixins.MixinPlayerEntity",
     "mixins.MixinRenderTickCounter",
